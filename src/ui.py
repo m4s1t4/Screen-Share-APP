@@ -69,24 +69,24 @@ class SelectionDialog(QDialog):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Seleccionar Fuente")
+        self.setWindowTitle("Select source")
         self.selection = None
         layout = QVBoxLayout()
 
         # Dropdowns para monitores y ventanas
         self.monitor_combo = QComboBox()
-        self.monitor_combo.addItem("Seleccionar Monitor")
+        self.monitor_combo.addItem("Slect Monitor")
         for monitor in list_monitors():
             self.monitor_combo.addItem(f"Monitor {monitor['id']}", monitor["id"])
 
         self.window_combo = QComboBox()
-        self.window_combo.addItem("Seleccionar Ventana")
+        self.window_combo.addItem("Select Window")
         for window in list_windows():
             self.window_combo.addItem(
                 f"{window['title']} (ID: {window['id']})", window["id"]
             )
 
-        layout.addWidget(QLabel("Seleccione un Monitor o Ventana"))
+        layout.addWidget(QLabel("Select a Monitor or a Window"))
         layout.addWidget(self.monitor_combo)
         layout.addWidget(self.window_combo)
 
@@ -119,11 +119,11 @@ class ScreenSharingApp(QWidget):
         self.setWindowTitle("Screen Sharing App")
         layout = QVBoxLayout()
 
-        self.start_button = QPushButton("Iniciar Compartición")
+        self.start_button = QPushButton("Start Sharing Screen")
         self.start_button.clicked.connect(self.start_sharing)
         layout.addWidget(self.start_button)
 
-        self.stop_button = QPushButton("Detener Compartición")
+        self.stop_button = QPushButton("Stop Sharing Screen")
         self.stop_button.clicked.connect(self.stop_sharing)
         layout.addWidget(self.stop_button)
 
