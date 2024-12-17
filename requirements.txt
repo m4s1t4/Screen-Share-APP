@@ -1,0 +1,7 @@
+imageio
+aiortc
+PyQt5
+numpy
+imageio[ffmpeg]
+pycairo
+PyGObject
