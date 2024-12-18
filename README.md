@@ -13,7 +13,7 @@ The application uses technologies such as:
 
 ### Demo Video
 
-[![Screen Sharing Demo](./media/Screencast from 2024-12-17 15-05-29.webm)
+![Screen Sharing Demo](media/Screencast from 2024-12-17 15-05-29.mp4)
 
 ---
 
