@@ -48,7 +48,6 @@ The application uses technologies such as:
 git clone https://github.com/your-username/screen-sharing-app.git
 cd screen-sharing-app
 ```
-````
 
 ### 2. Install dependencies
 
@@ -182,7 +181,4 @@ Developed by **[Your Name]**. If you have questions or suggestions, feel free to
 - 🔧 Support for **Wayland** environments using PipeWire.
 - 🎥 Screen streaming through **WebRTC**.
 - 💾 Screen recording in video format.
-
-```
-
-```
+````
