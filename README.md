@@ -94,18 +94,6 @@ python src/main.py
 
 ---
 
-## Screenshots
-
-### Monitor or Window Selection
-
-![Monitor or Window Selection](docs/select_window.png)
-
-### Real-Time Preview
-
-![Real-Time Preview](docs/preview_screen.png)
-
----
-
 ## Project Architecture
 
 The project file structure is as follows:
