@@ -1,4 +1,3 @@
-````markdown
 # Screen Sharing App
 
 ## Description
@@ -181,4 +180,3 @@ Developed by **[Your Name]**. If you have questions or suggestions, feel free to
 - 🔧 Support for **Wayland** environments using PipeWire.
 - 🎥 Screen streaming through **WebRTC**.
 - 💾 Screen recording in video format.
-````
