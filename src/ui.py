@@ -6,10 +6,11 @@ import io
 import asyncio
 
 
-def encode_image(data, width, height):
-    """Encodes raw RGB image data to base64 PNG."""
+def encode_image(data, width, height, target_resolution=(1920, 1080)):
+    """Encodes raw RGB image data to base64 PNG with resizing to 1080p."""
     try:
         image = Image.frombytes("RGB", (width, height), data)
+        image = image.resize(target_resolution, Image.LANCZOS)  # Redimensionar a 1080p
         buffer = io.BytesIO()
         image.save(buffer, format="PNG")
         return base64.b64encode(buffer.getvalue()).decode()
@@ -18,10 +19,11 @@ def encode_image(data, width, height):
         return None
 
 
-def encode_image_from_data(data):
-    """Encodes binary image data (e.g. from a window capture) to base64 PNG."""
+def encode_image_from_data(data, target_resolution=(1920, 1080)):
+    """Encodes binary image data (e.g., from window capture) to base64 PNG."""
     try:
         image = Image.open(io.BytesIO(data))
+        image = image.resize(target_resolution, Image.LANCZOS)  # Redimensionar a 1080p
         buffer = io.BytesIO()
         image.save(buffer, format="PNG")
         return base64.b64encode(buffer.getvalue()).decode()
@@ -35,8 +37,8 @@ def run_ui():
 
     def main(page: ft.Page):
         page.title = "Screen Sharing App"
-        page.window.width = 800
-        page.window.height = 600
+        page.window.width = 1000
+        page.window.height = 1000
         page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
         # Obtener listas de monitores y ventanas
@@ -65,8 +67,8 @@ def run_ui():
         )
         window_dropdown = ft.Dropdown(label="Window", options=window_options, width=300)
 
-        # Inicializar el preview sin imagen
-        preview_image = ft.Image(width=720, height=480)
+        # Inicializar el preview
+        preview_image = ft.Image(width=1920, height=1080)
 
         running_task = None  # Variable para almacenar la tarea de actualización
 
@@ -90,12 +92,12 @@ def run_ui():
                         print("Failed to encode image data to base64.")
                         preview_image.src_base64 = None
                     page.update()
-                    await asyncio.sleep(0.010)  # Ajusta este valor para cambiar los FPS
+                    await asyncio.sleep(0.016)  # ~60 FPS
                 except Exception as e:
                     print(f"Error updating preview: {e}")
                     preview_image.src_base64 = None
                     page.update()
-                    break
+                    break  # Salir del bucle si ocurre un error
 
         def start_sharing(e):
             """Inicia la vista previa."""
@@ -144,7 +146,7 @@ def run_ui():
                     ft.Container(content=preview_image, alignment=ft.alignment.center),
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
-                spacing=20,
+                spacing=2,
             )
         )
 
