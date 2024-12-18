@@ -1,12 +1,9 @@
-from PyQt5.QtWidgets import QApplication
-from ui import ScreenSharingApp
+from ui import run_ui  # Importa la función principal de la UI en Flet
 
 
 def main():
-    app = QApplication([])  # Crear la aplicación PyQt
-    window = ScreenSharingApp()  # Instanciar la ventana principal
-    window.show()
-    app.exec_()  # Iniciar el bucle de eventos
+    """Ejecuta la aplicación principal usando Flet."""
+    run_ui()
 
 
 if __name__ == "__main__":
